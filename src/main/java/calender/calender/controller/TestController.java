@@ -10,5 +10,15 @@ public class TestController {
     public String hello(){
         return "index";
     }
+
+    @GetMapping("/signup")
+    public String signup(){
+        return "signup";
+    }
+
+    @GetMapping("/login")
+    public String login(){
+        return "login";
+    }
 }
 

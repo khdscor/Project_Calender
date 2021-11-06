@@ -1,0 +1,111 @@
+div.container {
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+  min-height: 500px;
+}
+
+div.login {
+  width: 800px;
+  height: 50px;
+  position: relative;
+}
+
+input.signUp {
+  right: 80px;
+  margin: 8px;
+  height: 30px;
+  font-size: 18px;
+  position: absolute;
+}
+
+input.login {
+  right: 0;
+  margin: 8px;
+  height: 30px;
+  font-size: 18px;
+  position: absolute;
+}
+
+table {
+  background-color: #F2F2F2;
+}
+
+tr {
+  height: 70px;
+}
+
+td {
+  width: 100px;
+  text-align: right;
+  font-size: 15pt;
+  font-family: D2coding;
+}
+
+th#title {
+  font-size: 20pt;
+  font-weight: bold;
+  color: #FFBF00;
+  font-family: D2coding;
+}
+
+td.sunday {
+  text-align: center;
+  font-weight: bold;
+  color: red;
+  font-family: D2coding;
+}
+
+td.saturday {
+  text-align: center;
+  font-weight: bold;
+  color: blue;
+  font-family: D2coding;
+}
+
+td.etcday {
+  text-align: center;
+  font-weight: bold;
+  color: black;
+  font-family: D2coding;
+}
+
+td.sun {
+  text-align: right;
+  font-size: 15pt;
+  color: red;
+  font-family: D2coding;
+  vertical-align: top;
+}
+
+td.sat {
+  text-align: right;
+  font-size: 15pt;
+  color: blue;
+  font-family: D2coding;
+  vertical-align: top;
+}
+
+td.etc {
+  text-align: right;
+  font-size: 15pt;
+  color: black;
+  font-family: D2coding;
+  vertical-align: top;
+}
+
+td.redbefore {
+  text-align: right;
+  font-size: 12pt;
+  color: gray;
+  font-family: D2coding;
+  vertical-align: top;
+}
+
+td.before {
+  text-align: right;
+  font-size: 12pt;
+  color: gray;
+  font-family: D2coding;
+  vertical-align: top;
+}
