@@ -1,0 +1,54 @@
+div.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  width: 50%;
+  min-height: 500px;
+}
+
+form {
+  margin: 10px auto;
+  border: 2px solid #FFBF00;
+  position: relative;
+  width: 80%;
+  height: 300px;
+}
+
+input.id {
+  top: 15%;
+  width: 80%;
+  left: 10%;
+  height: 40px;
+  font-size: 20px;
+  align-content: center;
+  position: absolute;
+}
+
+input.password {
+  top: 35%;
+  width: 80%;
+  left: 10%;
+  height: 40px;
+  font-size: 20px;
+  position: absolute;
+}
+
+input.rePassword {
+  top: 55%;
+  width: 80%;
+  left: 10%;
+  height: 40px;
+  font-size: 20px;
+  position: absolute;
+}
+
+input.signUp {
+  top: 75%;
+  width: 80%;
+  left: 10%;
+  height: 40px;
+  font-size: 20px;
+  position: absolute;
+}
