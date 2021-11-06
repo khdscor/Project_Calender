@@ -1,13 +1,11 @@
 div.container {
   align-items: center;
-
   flex-direction: column;
   display: flex;
   min-height: 500px;
 }
 
 div.login {
-
   width: 800px;
   height: 50px;
   position: relative;
@@ -44,7 +42,6 @@ td {
   font-family: D2coding;
 }
 
-/* 타이틀 스타일 */
 th#title {
   font-size: 20pt;
   font-weight: bold;
@@ -52,7 +49,6 @@ th#title {
   font-family: D2coding;
 }
 
-/* 요일 스타일 */
 td.sunday {
   text-align: center;
   font-weight: bold;
@@ -74,7 +70,6 @@ td.etcday {
   font-family: D2coding;
 }
 
-/* 날짜 스타일 */
 td.sun {
   text-align: right;
   font-size: 15pt;
