@@ -30,10 +30,10 @@
 %>
 <div class="container">
     <div class="login">
-        <input class ="signUp" type ="button" value="회원가입" onclick="location='signup'">
-        <input class ="login" type ="button" value="로그인" onclick="location='login'">
+        <input class="signUp" type="button" value="회원가입" onclick="location='signup'">
+        <input class="login" type="button" value="로그인" onclick="location='login'">
     </div>
-    <table  width="800" border="1" cellpadding="5" cellspacing="0">
+    <table width="800" border="1" cellpadding="5" cellspacing="0">
         <tr>
             <th>
                 <input type="button" value="이전 달"
