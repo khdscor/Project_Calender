@@ -1,12 +1,9 @@
 <%@page import="calender.calender.util.Calendar" %>
 <%@page import="java.util.Date" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>달력</title>
+    <title>caledar</title>
     <link href="${pageContext.request.contextPath}/css/index.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -33,8 +30,8 @@
 %>
 <div class="container">
     <div class="login">
-        <button class ="signUp">회원가입</button>
-        <button class ="login" >로그인</button>
+        <input class ="signUp" type ="button" value="회원가입" onclick="location='signup'">
+        <input class ="login" type ="button" value="로그인" onclick="location='login'">
     </div>
     <table  width="800" border="1" cellpadding="5" cellspacing="0">
         <tr>

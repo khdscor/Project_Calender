@@ -13,7 +13,7 @@ div.login {
   position: relative;
 }
 
-button.signUp {
+input.signUp {
   right: 80px;
   margin: 8px;
   height: 30px;
@@ -21,7 +21,7 @@ button.signUp {
   position: absolute;
 }
 
-button.login {
+input.login {
   right: 0;
   margin: 8px;
   height: 30px;
