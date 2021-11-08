@@ -1,6 +1,8 @@
 <%@page import="calender.calender.util.Calendar" %>
 <%@page import="java.util.Date" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 <html>
 <head>
     <title>caledar</title>
@@ -29,10 +31,15 @@
 
 %>
 <div class="container">
-    <div class="login">
-        <input class="signUp" type="button" value="회원가입" onclick="location='signup'">
-        <input class="login" type="button" value="로그인" onclick="location='login'">
-    </div>
+    <sec:authorize access="isAuthenticated()">
+        로그인 됬다
+    </sec:authorize>
+    <sec:authorize access="isAnonymous()">
+        <div class="login">
+            <input class="signUp" type="button" value="회원가입" onclick="location='signup'">
+            <input class="login" type="button" value="로그인" onclick="location='login'">
+        </div>
+    </sec:authorize>
     <table width="800" border="1" cellpadding="5" cellspacing="0">
         <tr>
             <th>
