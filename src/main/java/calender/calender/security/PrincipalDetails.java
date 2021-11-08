@@ -2,14 +2,17 @@ package calender.calender.security;
 
 import calender.calender.domain.User;
 import java.util.Collection;
+import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+@Data
 public class PrincipalDetails implements UserDetails {
 
     private User user;
 
     public PrincipalDetails(User user){
+        super();
         this.user = user;
     }
 
