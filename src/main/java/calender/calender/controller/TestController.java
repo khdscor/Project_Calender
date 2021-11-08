@@ -1,6 +1,7 @@
 package calender.calender.controller;
 
 import calender.calender.dto.SignupRequest;
+import calender.calender.exception.AlreadyExistedIdException;
 import calender.calender.exception.NotMatchPasswordException;
 import calender.calender.exception.WrongInputException;
 import calender.calender.service.UserService;
@@ -42,6 +43,12 @@ public class TestController {
 
     @ExceptionHandler(NotMatchPasswordException.class)
     public String handleNotMatchPasswordException(NotMatchPasswordException e, Model model) {
+        model.addAttribute("message", e.getMessage());
+        return "signup";
+    }
+
+    @ExceptionHandler(AlreadyExistedIdException.class)
+    public String handleAlreadyExistedIdException(AlreadyExistedIdException e, Model model) {
         model.addAttribute("message", e.getMessage());
         return "signup";
     }

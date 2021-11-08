@@ -2,6 +2,7 @@ package calender.calender.service;
 
 import calender.calender.domain.User;
 import calender.calender.dto.SignupRequest;
+import calender.calender.exception.AlreadyExistedIdException;
 import calender.calender.exception.NotMatchPasswordException;
 import calender.calender.exception.WrongInputException;
 import calender.calender.repository.UserRepository;
@@ -19,9 +20,6 @@ public class UserService {
 
     public void signup(SignupRequest signupRequest) {
         validate(signupRequest);
-       /* if (userRepository.existsByEmail(signUpRequest.getEmail())) {
-            throw new AlreadyExistedEmailException("이미 사용중인 이메일입니다.");
-        }*/
         String rawPassword = passwordEncoder.encode(signupRequest.getPassword());
 
         User user = User.builder()
@@ -37,6 +35,9 @@ public class UserService {
         }
         if (!signupRequest.getPassword().equals(signupRequest.getRePassword())) {
             throw new NotMatchPasswordException("페스워드가 일치하지 않습니다!");
+        }
+         if (userRepository.existsById(signupRequest.getId())) {
+            throw new AlreadyExistedIdException("이미 사용중인 아이디입니다.");
         }
     }
 }
