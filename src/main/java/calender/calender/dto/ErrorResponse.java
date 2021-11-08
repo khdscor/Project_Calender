@@ -8,8 +8,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor
 @Getter
-public class SignupRequest {
-    private String id;
-    private String password;
-    private String rePassword;
+public class ErrorResponse {
+    private String errorMessage;
 }

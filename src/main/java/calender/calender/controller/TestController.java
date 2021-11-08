@@ -1,9 +1,13 @@
 package calender.calender.controller;
 
+import calender.calender.dto.ErrorResponse;
 import calender.calender.dto.SignupRequest;
+import calender.calender.exception.WrongInputException;
 import calender.calender.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -25,9 +29,16 @@ public class TestController {
     }
 
     @PostMapping("/signup")
-    public @ResponseBody String signup(SignupRequest signupRequest) {
+    public String signup(SignupRequest signupRequest) {
         userService.signup(signupRequest);
-        return "index";
+        return "redirect:/";
+    }
+
+    @ExceptionHandler(WrongInputException.class)
+    public String handleWrongInputException(WrongInputException e, Model model) {
+        ErrorResponse response = new ErrorResponse(e.getMessage());
+        model.addAttribute("message", response);
+        return "signup";
     }
 
     @GetMapping("/login")

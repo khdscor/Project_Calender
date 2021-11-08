@@ -1,5 +1,6 @@
 package calender.calender.domain;
 
+import calender.calender.exception.WrongInputException;
 import com.sun.istack.NotNull;
 import java.sql.Timestamp;
 import java.util.Objects;
@@ -46,13 +47,13 @@ public class User {
     private void validateNickName(String nickName) {
         if (Objects.isNull(nickName) || nickName.isEmpty()
             || nickName.length() > NICKNAME_MAX_LENGTH) {
-            throw new IllegalArgumentException("닉네임 형식이 잘못되었습니다.");
+            throw new WrongInputException("닉네임 형식이 잘못되었습니다.");
         }
     }
 
     private void validatePassword(String password) {
         if (Objects.isNull(password) || password.isEmpty()) {
-            throw new IllegalArgumentException("비밀번호가 잘못되었습니다.");
+            throw new WrongInputException("비밀번호가 잘못되었습니다.");
         }
     }
 }
