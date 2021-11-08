@@ -4,7 +4,6 @@ import calender.calender.exception.WrongInputException;
 import com.sun.istack.NotNull;
 import java.sql.Timestamp;
 import java.util.Objects;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,13 +18,11 @@ import org.hibernate.annotations.CreationTimestamp;
 @NoArgsConstructor
 public class User {
 
-    private static final int NICKNAME_MAX_LENGTH = 100;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = NICKNAME_MAX_LENGTH)
+    @NotNull
     private String nickName;
 
     @NotNull
@@ -45,15 +42,14 @@ public class User {
     }
 
     private void validateNickName(String nickName) {
-        if (Objects.isNull(nickName) || nickName.isEmpty()
-            || nickName.length() > NICKNAME_MAX_LENGTH) {
-            throw new WrongInputException("닉네임 형식이 잘못되었습니다.");
+        if (Objects.isNull(nickName) || nickName.isEmpty()) {
+            throw new WrongInputException("아이디를 채워주세요!");
         }
     }
 
     private void validatePassword(String password) {
         if (Objects.isNull(password) || password.isEmpty()) {
-            throw new WrongInputException("비밀번호가 잘못되었습니다.");
+            throw new WrongInputException("비밀번호를 채워주세요!");
         }
     }
 }
