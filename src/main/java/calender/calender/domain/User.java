@@ -1,7 +1,7 @@
 package calender.calender.domain;
 
 import com.sun.istack.NotNull;
-import exception.WrongInputException;
+import calender.calender.exception.WrongInputException;
 import java.sql.Timestamp;
 import java.util.Objects;
 import javax.persistence.Column;

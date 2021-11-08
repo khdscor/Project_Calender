@@ -1,4 +1,4 @@
-package exception;
+package calender.calender.exception;
 
 public class WrongInputException extends RuntimeException {
 
