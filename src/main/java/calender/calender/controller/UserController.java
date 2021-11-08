@@ -2,7 +2,6 @@ package calender.calender.controller;
 
 import calender.calender.dto.SignupRequest;
 import calender.calender.exception.AlreadyExistedIdException;
-import calender.calender.exception.NotExistsUserException;
 import calender.calender.exception.NotMatchPasswordException;
 import calender.calender.service.UserService;
 import lombok.RequiredArgsConstructor;
