@@ -23,7 +23,7 @@ public class User {
     private Long id;
 
     @NotNull
-    private String nickName;
+    private String loginId;
 
     @NotNull
     private String password;
@@ -32,17 +32,17 @@ public class User {
     private Timestamp createdDate;
 
     @Builder
-    public User(Long id, String nickName, String password, Timestamp createdDate) {
-        validateNickName(nickName);
+    public User(Long id, String loginId, String password, Timestamp createdDate) {
+        validateLoginId(loginId);
         validatePassword(password);
         this.id = id;
-        this.nickName = nickName;
+        this.loginId = loginId;
         this.password = password;
         this.createdDate = createdDate;
     }
 
-    private void validateNickName(String nickName) {
-        if (Objects.isNull(nickName) || nickName.isEmpty()) {
+    private void validateLoginId(String loginId) {
+        if (Objects.isNull(loginId) || loginId.isEmpty()) {
             throw new WrongInputException("아이디를 채워주세요!");
         }
     }

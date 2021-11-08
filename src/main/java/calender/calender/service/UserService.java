@@ -23,7 +23,7 @@ public class UserService {
         String rawPassword = passwordEncoder.encode(signupRequest.getPassword());
 
         User user = User.builder()
-            .nickName(signupRequest.getId())
+            .loginId(signupRequest.getId())
             .password(rawPassword)
             .build();
         userRepository.save(user);
@@ -36,7 +36,7 @@ public class UserService {
         if (!signupRequest.getPassword().equals(signupRequest.getRePassword())) {
             throw new NotMatchPasswordException("페스워드가 일치하지 않습니다!");
         }
-         if (userRepository.existsById(signupRequest.getId())) {
+         if (userRepository.existsByLoginId(signupRequest.getId())) {
             throw new AlreadyExistedIdException("이미 사용중인 아이디입니다.");
         }
     }
