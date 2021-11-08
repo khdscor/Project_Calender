@@ -1,7 +1,7 @@
 package calender.calender.controller;
 
-import calender.calender.dto.ErrorResponse;
 import calender.calender.dto.SignupRequest;
+import calender.calender.exception.NotMatchPasswordException;
 import calender.calender.exception.WrongInputException;
 import calender.calender.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -36,8 +36,13 @@ public class TestController {
 
     @ExceptionHandler(WrongInputException.class)
     public String handleWrongInputException(WrongInputException e, Model model) {
-        ErrorResponse response = new ErrorResponse(e.getMessage());
-        model.addAttribute("message", response);
+        model.addAttribute("message", e.getMessage());
+        return "signup";
+    }
+
+    @ExceptionHandler(NotMatchPasswordException.class)
+    public String handleNotMatchPasswordException(NotMatchPasswordException e, Model model) {
+        model.addAttribute("message", e.getMessage());
         return "signup";
     }
 
