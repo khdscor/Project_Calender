@@ -1,10 +1,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
     <title>signup</title>
     <link href="${pageContext.request.contextPath}/css/signup.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<sec:authorize access="isAuthenticated()">
+    <%
+        response.sendRedirect("/");
+    %>
+</sec:authorize>
 <%
     if (request.getAttribute("message") != null) {
         String message = request.getAttribute("message").toString();
