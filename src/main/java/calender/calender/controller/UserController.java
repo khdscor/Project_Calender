@@ -2,8 +2,8 @@ package calender.calender.controller;
 
 import calender.calender.dto.SignupRequest;
 import calender.calender.exception.AlreadyExistedIdException;
+import calender.calender.exception.NotExistsUserException;
 import calender.calender.exception.NotMatchPasswordException;
-import calender.calender.exception.WrongInputException;
 import calender.calender.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -27,12 +27,6 @@ public class UserController {
     public String signup(SignupRequest signupRequest) {
         userService.signup(signupRequest);
         return "redirect:/";
-    }
-
-    @ExceptionHandler(WrongInputException.class)
-    public String handleWrongInputException(WrongInputException e, Model model) {
-        model.addAttribute("message", e.getMessage());
-        return "signup";
     }
 
     @ExceptionHandler(NotMatchPasswordException.class)

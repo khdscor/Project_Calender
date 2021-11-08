@@ -15,12 +15,26 @@
 <%
     }
 %>
+<script>
+  function check() {
+    if (document.getElementById("id").value == "") {
+      alert("아이디를 입력하세요");
+      return;
+    }
+    if (document.getElementById("password").value == "") {
+      alert("비밀번호를 입력하세요");
+      return;
+    }
+    form.submit();
+  }
+</script>
 <div class="container">
-    <form action="/login" method="post">
-        <input class="id" type="text" name="id" placeholder="아이디를 입력해주세요">
-        <input class="password" type="password" name="password" placeholder="비밀번호를 입력해주세요"/>
+    <form action="/login" method="post" name="form">
+        <input class="id" id="id" type="text" name="id" placeholder="아이디를 입력해주세요">
+        <input class="password" id="password" type="password" name="password"
+               placeholder="비밀번호를 입력해주세요"/>
         <input class="signUp" type="button" value="회원가입" onclick="location='signup'">
-        <input class="login" type="submit" value="로그인">
+        <input class="login" type="button" value="로그인" onclick="check()">
     </form>
 </div>
 </body>
