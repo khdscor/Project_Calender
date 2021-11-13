@@ -1,5 +1,6 @@
 <%@page import="calender.calender.util.Calendar" %>
 <%@page import="java.util.Date" %>
+<%@ page import="org.springframework.security.core.Authentication" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
@@ -28,18 +29,17 @@
     } catch (Exception e) {
 
     }
-
 %>
 <div class="container">
-    <sec:authorize access="isAuthenticated()">
-        로그인 됬다
-    </sec:authorize>
-    <sec:authorize access="isAnonymous()">
-        <div class="login">
+    <div class="login">
+        <sec:authorize access="isAuthenticated()">
+            <div class="auth"><sec:authentication property="Principal.user.loginId"/> 님</div>
+        </sec:authorize>
+        <sec:authorize access="isAnonymous()">
             <input class="signUp" type="button" value="회원가입" onclick="location='signup'">
             <input class="login" type="button" value="로그인" onclick="location='login'">
-        </div>
-    </sec:authorize>
+        </sec:authorize>
+    </div>
     <table width="800" border="1" cellpadding="5" cellspacing="0">
         <tr>
             <th>

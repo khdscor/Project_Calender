@@ -11,6 +11,13 @@ div.login {
   position: relative;
 }
 
+div.auth {
+  right: 20px;
+  margin: 8px;
+  font-size: 18px;
+  position: absolute;
+}
+
 input.signUp {
   right: 80px;
   margin: 8px;
