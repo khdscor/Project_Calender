@@ -3,7 +3,7 @@ package calender.calender.controller;
 import calender.calender.dto.SignupRequest;
 import calender.calender.exception.AlreadyExistedIdException;
 import calender.calender.exception.NotMatchPasswordException;
-import calender.calender.service.UserService;
+import calender.calender.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 @RequiredArgsConstructor
-public class UserController {
+public class AuthController {
 
-    private final UserService userService;
+    private final AuthService authService;
 
     @GetMapping("/signup")
     public String signupPage() {
@@ -24,7 +24,7 @@ public class UserController {
 
     @PostMapping("/signup")
     public String signup(SignupRequest signupRequest) {
-        userService.signup(signupRequest);
+        authService.signup(signupRequest);
         return "redirect:/";
     }
 
