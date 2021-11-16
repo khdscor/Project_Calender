@@ -1,6 +1,5 @@
 <%@page import="calender.calender.util.Calendar" %>
 <%@page import="java.util.Date" %>
-<%@ page import="org.springframework.security.core.Authentication" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
