@@ -11,7 +11,7 @@
     <div class="container">
         <div class="list">글목록</div>
         <sec:authorize access="isAuthenticated()">
-            <div class="write" onclick="check()">글쓰기</div>
+            <div class="write" onclick="location.href='/articles/write'">글쓰기</div>
         </sec:authorize>
         <div class="cancel" onclick="location='/'">x</div>
         <div class="article">
