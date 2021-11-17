@@ -2,10 +2,12 @@ package calender.calender.service;
 
 import calender.calender.domain.Article;
 import calender.calender.domain.User;
+import calender.calender.dto.ArticleResponse;
 import calender.calender.dto.WriteRequest;
 import calender.calender.exception.NotExistsUserException;
 import calender.calender.repository.ArticleRepository;
 import calender.calender.repository.UserRepository;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -29,5 +31,9 @@ public class ArticleService {
                 .month(writeRequest.getMonth())
                 .day(writeRequest.getDay())
                 .user(user).build());
+    }
+
+    public List<ArticleResponse> findArticles(int year, int month, int day) {
+        return articleRepository.findAllByDate(year, month, day);
     }
 }
