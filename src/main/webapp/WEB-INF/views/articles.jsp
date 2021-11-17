@@ -7,11 +7,19 @@
           type="text/css">
 </head>
 <body>
+<%
+    String year = request.getParameter("year");
+    String month = request.getParameter("month");
+    String day = request.getParameter("day");
+%>
 <div class="outside">
     <div class="container">
         <div class="list">글목록</div>
         <sec:authorize access="isAuthenticated()">
-            <div class="write" onclick="location.href='/articles/write'">글쓰기</div>
+            <div class="write"
+                 onclick="location.href='/articles/write?year=' + <%=year%> + '&month=' + <%=month%> + '&day=' + <%=day%>">
+                글쓰기
+            </div>
         </sec:authorize>
         <div class="cancel" onclick="location='/'">x</div>
         <div class="article">
