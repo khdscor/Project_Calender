@@ -13,10 +13,4 @@ public class MainController {
     public String main() {
         return "main";
     }
-
-    @ExceptionHandler(WrongInputException.class)
-    public String handleWrongInputException(WrongInputException e, Model model) {
-        model.addAttribute("message", e.getMessage());
-        return "main";
-    }
 }
