@@ -54,3 +54,7 @@ input.write {
   right: 60px;
   top: 490px;
 }
+
+input.dummy {
+  visibility: hidden;
+}
