@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
@@ -48,6 +49,7 @@ public class Article {
     @CreationTimestamp
     private Timestamp createdDate;
 
+    @Builder
     public Article(Long id, int year, int month, int day, String title, String content,
         User user, Timestamp createdDate) {
         validate(title, content, user);
