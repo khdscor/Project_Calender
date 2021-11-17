@@ -88,13 +88,16 @@
                 for (int i = 1; i <= Calendar.lastDay(year, month); i++) {
                     switch (Calendar.weekDay(year, month, i)) {
                         case 0:
-                            out.println("<td class ='sun'>" + i + "</td>");
+                            out.println("<td class ='sun' onclick=\"location='articles?year=" + year
+                                    + "&month=" + month + "&day=" + i + "'\">" + i + "</td>");
                             break;
                         case 6:
-                            out.println("<td class ='sat'>" + i + "</td>");
+                            out.println("<td class ='sat' onclick=\"location='articles?year=" + year
+                                    + "&month=" + month + "&day=" + i + "'\">" + i + "</td>");
                             break;
                         default:
-                            out.println("<td class ='etc'>" + i + "</td>");
+                            out.println("<td class ='etc' onclick=\"location='articles?year=" + year
+                                    + "&month=" + month + "&day=" + i + "'\">" + i + "</td>");
                             break;
                     }
 

@@ -83,6 +83,7 @@ td.sun {
   color: red;
   font-family: D2coding;
   vertical-align: top;
+  cursor: pointer;
 }
 
 td.sat {
@@ -91,6 +92,7 @@ td.sat {
   color: blue;
   font-family: D2coding;
   vertical-align: top;
+  cursor: pointer;
 }
 
 td.etc {
@@ -99,6 +101,7 @@ td.etc {
   color: black;
   font-family: D2coding;
   vertical-align: top;
+  cursor: pointer;
 }
 
 td.redbefore {
