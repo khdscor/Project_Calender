@@ -23,7 +23,7 @@ public class ArticleController {
         @RequestParam(value = "month") int month,
         @RequestParam(value = "day") int day,
         Model model) {
-        model.addAttribute(articleService.findArticles(year, month, day));
+        model.addAttribute("articles", articleService.findArticles(year, month, day));
 
         return "/articles";
     }

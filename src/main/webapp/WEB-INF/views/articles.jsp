@@ -1,3 +1,5 @@
+<%@ page import="calender.calender.dto.ArticleResponse" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
@@ -22,22 +24,28 @@
             </div>
         </sec:authorize>
         <div class="cancel" onclick="location='/'">x</div>
-        <div class="article">
-            <div class="writer">
-                작성자
-            </div>
-            <div class="title">
-                제목
-            </div>
-            <div class="subInfo">
-                <div class="createdDate">
-                    작성일
-                </div>
-                <div class="comment">
-                    댓글 수
-                </div>
-            </div>
-        </div>
+        <%
+            List<ArticleResponse> articles = (List<ArticleResponse>) request.getAttribute(
+                    "articles");
+            for (ArticleResponse article : articles) {
+                out.print("<div class=\"article\">\n"
+                        + "            <div class=\"writer\">\n"
+                        + "                작성자: " + article.getWriter() + "\n"
+                        + "            </div>\n"
+                        + "            <div class=\"title\">\n"
+                        + "                " + article.getTitle() + "\n"
+                        + "            </div>\n"
+                        + "            <div class=\"subInfo\">\n"
+                        + "                <div class=\"createdDate\">\n"
+                        + "                    " + article.getCreatedDate() + "\n"
+                        + "                </div>\n"
+                        + "                <div class=\"comment\">\n"
+                        + "                    댓글 수\n"
+                        + "                </div>\n"
+                        + "            </div>\n"
+                        + "        </div>");
+            }
+        %>
     </div>
 </div>
 </body>
