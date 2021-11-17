@@ -47,7 +47,12 @@
                 <input class="write" type="button" value="완료" onclick="check()">
             </form>
         </sec:authorize>
-
+        <sec:authorize access="isAnonymous()">
+            <script>
+              alert("로그인 먼저 진행해주세요!")
+              location.href="/login"
+            </script>
+        </sec:authorize>
     </div>
 </div>
 </body>
