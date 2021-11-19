@@ -1,0 +1,60 @@
+div.outside {
+  width: 800px;
+  margin: auto;
+}
+
+div.container {
+  background-color: gray;
+  position: relative;
+  height: 500px;
+  margin: 10px;
+  padding-top: 40px;
+  border-radius: 10px;
+  background-color: #F2F2F2;
+  box-shadow: 0 0 8px #888888;
+  border: 1px solid black;
+}
+
+div.cancel {
+  position: absolute;
+  top: -5px;
+  right: 15px;
+  width: 30px;
+  height: 36px;
+  color: black;
+  font-size: 36px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+input.title {
+  position: absolute;
+  height: 50px;
+  width: 600px;
+  font-size: 30px;
+  top: 50px;
+  left: 90px;
+}
+
+textarea.content {
+  position: absolute;
+  height:350px;
+  width: 600px;
+  font-size: 20px;
+  left:90px;
+  top: 130px;
+  resize: none;
+}
+
+input.write {
+  position: absolute;
+  height: 34px;
+  width: 100px;
+  font-size: 20px;
+  right: 60px;
+  top: 490px;
+}
+
+input.dummy {
+  visibility: hidden;
+}

@@ -28,18 +28,17 @@
     } catch (Exception e) {
 
     }
-
 %>
 <div class="container">
-    <sec:authorize access="isAuthenticated()">
-        로그인 됬다
-    </sec:authorize>
-    <sec:authorize access="isAnonymous()">
-        <div class="login">
+    <div class="login">
+        <sec:authorize access="isAuthenticated()">
+            <div class="auth"><sec:authentication property="Principal.user.loginId"/> 님</div>
+        </sec:authorize>
+        <sec:authorize access="isAnonymous()">
             <input class="signUp" type="button" value="회원가입" onclick="location='signup'">
             <input class="login" type="button" value="로그인" onclick="location='login'">
-        </div>
-    </sec:authorize>
+        </sec:authorize>
+    </div>
     <table width="800" border="1" cellpadding="5" cellspacing="0">
         <tr>
             <th>
@@ -89,13 +88,16 @@
                 for (int i = 1; i <= Calendar.lastDay(year, month); i++) {
                     switch (Calendar.weekDay(year, month, i)) {
                         case 0:
-                            out.println("<td class ='sun'>" + i + "</td>");
+                            out.println("<td class ='sun' onclick=\"location='articles?year=" + year
+                                    + "&month=" + month + "&day=" + i + "'\">" + i + "</td>");
                             break;
                         case 6:
-                            out.println("<td class ='sat'>" + i + "</td>");
+                            out.println("<td class ='sat' onclick=\"location='articles?year=" + year
+                                    + "&month=" + month + "&day=" + i + "'\">" + i + "</td>");
                             break;
                         default:
-                            out.println("<td class ='etc'>" + i + "</td>");
+                            out.println("<td class ='etc' onclick=\"location='articles?year=" + year
+                                    + "&month=" + month + "&day=" + i + "'\">" + i + "</td>");
                             break;
                     }
 
