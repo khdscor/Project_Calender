@@ -28,7 +28,8 @@
             List<ArticleResponse> articles = (List<ArticleResponse>) request.getAttribute(
                     "articles");
             for (ArticleResponse article : articles) {
-                out.print("<div class=\"article\">\n"
+                out.print("<div class=\"article\" onclick=\"location='/articles/"
+                        + article.getArticleId() + "'\" >\n"
                         + "            <div class=\"writer\">\n"
                         + "                작성자: " + article.getWriter() + "\n"
                         + "            </div>\n"

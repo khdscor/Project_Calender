@@ -5,6 +5,7 @@ import calender.calender.domain.User;
 import calender.calender.dto.ArticleCountResponse;
 import calender.calender.dto.ArticleResponse;
 import calender.calender.dto.WriteRequest;
+import calender.calender.exception.NotExistsArticleException;
 import calender.calender.exception.NotExistsUserException;
 import calender.calender.repository.ArticleRepository;
 import calender.calender.repository.UserRepository;
@@ -55,5 +56,11 @@ public class ArticleService {
     @Transactional
     public List<ArticleResponse> findArticles(int year, int month, int day) {
         return articleRepository.findAllByDate(year, month, day);
+    }
+
+    @Transactional
+    public ArticleResponse findArticleDetails(Long articleId) {
+        return articleRepository.findDetailsById(articleId)
+            .orElseThrow(() -> new NotExistsArticleException("해당하는 게시글이 없습니다."));
     }
 }

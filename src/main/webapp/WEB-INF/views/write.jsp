@@ -15,7 +15,7 @@
 <script>
   function cancel() {
     if (confirm("작성하던 글이 사라집니다. 계속 진행하시겠습니까?")) {
-      location.href="/articles";
+      location.href = "/articles?year=" + <%=year%> + "&month=" + <%=month%> + "&day=" + <%=day%>;
     }
   }
 
@@ -50,7 +50,7 @@
         <sec:authorize access="isAnonymous()">
             <script>
               alert("로그인 먼저 진행해주세요!")
-              location.href="/login"
+              location.href = "/login"
             </script>
         </sec:authorize>
     </div>

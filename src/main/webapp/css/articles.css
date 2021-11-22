@@ -56,6 +56,7 @@ div.article {
   border-radius: 10px;
   border: 2px solid #FFBF00;
   padding: 15px 10px 0 10px;
+  cursor: pointer;
 }
 
 div.writer {

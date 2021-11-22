@@ -4,6 +4,7 @@ import calender.calender.domain.Article;
 import calender.calender.dto.ArticleCountResponse;
 import calender.calender.dto.ArticleResponse;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -18,7 +19,8 @@ public interface ArticleRepository extends JpaRepository<Article, Long> {
 
     @Query("select distinct new calender.calender.dto.ArticleResponse(user.id, user.loginId, "
         + "article.id, "
-        + "article.title, "
+        + "article.title,"
+        + "article.content, "
         + "article.createdDate) from Article article "
         + "inner join article.user user "
         + "where article.year = :year and article.month = :month and article.day = :day")
@@ -26,4 +28,13 @@ public interface ArticleRepository extends JpaRepository<Article, Long> {
         @Param("year") int year,
         @Param("month") int month,
         @Param("day") int day);
+
+    @Query("select distinct new calender.calender.dto.ArticleResponse(user.id, user.loginId, "
+        + "article.id, "
+        + "article.title,"
+        + "article.content, "
+        + "article.createdDate) from Article article "
+        + "inner join article.user user "
+        + "where article.id = :articleId")
+    Optional<ArticleResponse> findDetailsById(@Param("articleId") Long articleId);
 }

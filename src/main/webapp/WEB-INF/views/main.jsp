@@ -100,11 +100,14 @@
 
                     if (counts.containsKey(i)) {
                         if (counts.get(i) >= 1 && counts.get(i) <= 9) {
-                            out.println("<div class='count' style='background-color: yellow'></div></td>");
+                            out.println(
+                                    "<div class='count' style='background-color: yellow'></div></td>");
                         } else if (counts.get(i) >= 10 && counts.get(i) <= 19) {
-                            out.println("<div class='count' style='background-color: red'></div></td>");
+                            out.println(
+                                    "<div class='count' style='background-color: red'></div></td>");
                         } else {
-                            out.println("<div class='count' style='background-color: purple'></div></td>");
+                            out.println(
+                                    "<div class='count' style='background-color: purple'></div></td>");
                         }
                     } else {
                         out.println("</td>");
