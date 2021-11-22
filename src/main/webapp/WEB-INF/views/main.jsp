@@ -1,5 +1,7 @@
 <%@page import="calender.calender.util.Calendar" %>
 <%@page import="java.util.Date" %>
+<%@ page import="calender.calender.dto.ArticleCountResponse" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
@@ -18,23 +20,23 @@
         month = date.getMonth() + 1;
 
 %>
-<script>location.href='?year=<%=year%>&month=<%=month%>'; </script>
+<script>location.href = '?year=<%=year%>&month=<%=month%>'; </script>
 <%
     }
-    try {
-        year = Integer.parseInt(request.getParameter("year"));
-        month = Integer.parseInt(request.getParameter("month"));
+    year = Integer.parseInt(request.getParameter("year"));
+    month = Integer.parseInt(request.getParameter("month"));
 
-        if (month >= 13) {
-            year++;
-            month = 1;
-        } else if (month <= 0) {
-            year--;
-            month = 12;
-        }
-    } catch (Exception e) {
-
+    if (month >= 13) {
+        year++;
+        month = 1;
+    } else if (month <= 0) {
+        year--;
+        month = 12;
     }
+
+    List<ArticleCountResponse> counts = (List<ArticleCountResponse>) request.getAttribute(
+            "counts");
+
 %>
 <div class="container">
     <div class="login">
@@ -45,6 +47,16 @@
             <input class="signUp" type="button" value="회원가입" onclick="location='signup'">
             <input class="login" type="button" value="로그인" onclick="location='login'">
         </sec:authorize>
+        <div class="counts">
+            <div>1~9 개: &nbsp&nbsp <img class="count"
+                                        src="${pageContext.request.contextPath}/img/yellowCircle.png">
+            </div>
+            <div>10~19 개: <img class="count"
+                               src="${pageContext.request.contextPath}/img/redCircle.png"></div>
+            <div>20~ 개: &nbsp&nbsp <img class="count"
+                                        src="${pageContext.request.contextPath}/img/purpleCircle.png">
+            </div>
+        </div>
     </div>
     <table width="800" border="1" cellpadding="5" cellspacing="0">
         <tr>

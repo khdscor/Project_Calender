@@ -5,6 +5,16 @@ div.container {
   min-height: 500px;
 }
 
+div.counts {
+  position: absolute;
+  right: -100px;
+  top: 120px;
+}
+
+img.count {
+  width: 15px;
+}
+
 div.login {
   width: 800px;
   height: 50px;
