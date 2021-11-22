@@ -1,6 +1,7 @@
 <%@ page import="calender.calender.dto.ArticleResponse" %>
-<%@ page import="java.util.Arrays" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<% pageContext.setAttribute("replaceChar", "\n"); %>
 <html>
 <head>
     <title>articleDetails</title>
@@ -15,12 +16,15 @@
 <div class="outside">
     <div class="container">
         <div class="cancel" onclick="history.back()">x</div>
-        <div class="title"><%=details.getTitle()%></div>
-        <div class="content">
-                <%=details.getContent()%>
+        <div class="title"><%=details.getTitle()%>
         </div>
-        <div class="writer">작성자: <%=details.getWriter()%></div>
-        <div class="createdDate"><%=details.getCreatedDate()%></div>
+        <div class="content">
+            ${fn:replace(details.getContent(), replaceChar , "<br/>")}
+        </div>
+        <div class="writer">작성자: <%=details.getWriter()%>
+        </div>
+        <div class="createdDate"><%=details.getCreatedDate()%>
+        </div>
     </div>
 </div>
 </body>
