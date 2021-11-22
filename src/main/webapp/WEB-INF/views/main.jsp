@@ -2,6 +2,7 @@
 <%@page import="java.util.Date" %>
 <%@ page import="calender.calender.dto.ArticleCountResponse" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.util.HashMap" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
@@ -12,31 +13,10 @@
 </head>
 <body>
 <%
-    int year = 0;
-    int month = 0;
-    if (request.getParameter("year") == null || request.getParameter("month") == null) {
-        Date date = new Date();
-        year = date.getYear() + 1900;
-        month = date.getMonth() + 1;
-
-%>
-<script>location.href = '?year=<%=year%>&month=<%=month%>'; </script>
-<%
-    }
-    year = Integer.parseInt(request.getParameter("year"));
-    month = Integer.parseInt(request.getParameter("month"));
-
-    if (month >= 13) {
-        year++;
-        month = 1;
-    } else if (month <= 0) {
-        year--;
-        month = 12;
-    }
-
-    List<ArticleCountResponse> counts = (List<ArticleCountResponse>) request.getAttribute(
+    int year = Integer.parseInt(request.getParameter("year"));
+    int month = Integer.parseInt(request.getParameter("month"));
+    HashMap<Integer, Long> counts = (HashMap<Integer, Long>) request.getAttribute(
             "counts");
-
 %>
 <div class="container">
     <div class="login">
@@ -70,7 +50,6 @@
             <th>
                 <input type="button" value="다음 달"
                        onclick="location.href='?year=<%=year%>&month=<%=month+1%>'">
-
             </th>
         </tr>
         <tr>
@@ -100,7 +79,6 @@
                                 "<td class = 'before'>" + (month == 1 ? 12 : month - 1) + "/"
                                         + ++start
                                         + "</td>");
-
                     }
                 }
 
@@ -108,16 +86,28 @@
                     switch (Calendar.weekDay(year, month, i)) {
                         case 0:
                             out.println("<td class ='sun' onclick=\"location='articles?year=" + year
-                                    + "&month=" + month + "&day=" + i + "'\">" + i + "</td>");
+                                    + "&month=" + month + "&day=" + i + "'\">" + i);
                             break;
                         case 6:
                             out.println("<td class ='sat' onclick=\"location='articles?year=" + year
-                                    + "&month=" + month + "&day=" + i + "'\">" + i + "</td>");
+                                    + "&month=" + month + "&day=" + i + "'\">" + i);
                             break;
                         default:
                             out.println("<td class ='etc' onclick=\"location='articles?year=" + year
-                                    + "&month=" + month + "&day=" + i + "'\">" + i + "</td>");
+                                    + "&month=" + month + "&day=" + i + "'\">" + i);
                             break;
+                    }
+
+                    if (counts.containsKey(i)) {
+                        if (counts.get(i) >= 1 && counts.get(i) <= 9) {
+                            out.println("<div class='count' style='background-color: yellow'></div></td>");
+                        } else if (counts.get(i) >= 10 && counts.get(i) <= 19) {
+                            out.println("<div class='count' style='background-color: red'></div></td>");
+                        } else {
+                            out.println("<div class='count' style='background-color: purple'></div></td>");
+                        }
+                    } else {
+                        out.println("</td>");
                     }
 
                     if (Calendar.weekDay(year, month, i) == 6 && i != Calendar.lastDay(year,
