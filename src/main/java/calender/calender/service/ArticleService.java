@@ -8,6 +8,7 @@ import calender.calender.dto.WriteRequest;
 import calender.calender.exception.NotExistsUserException;
 import calender.calender.repository.ArticleRepository;
 import calender.calender.repository.UserRepository;
+import java.util.HashMap;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -21,8 +22,19 @@ public class ArticleService {
 
     private final ArticleRepository articleRepository;
 
-    public List<ArticleCountResponse> findArticleCounts(int year, int month) {
-        return articleRepository.countByDate(year, month);
+    public HashMap<Integer, Long> findArticleCounts(int year, int month) {
+        List<ArticleCountResponse> articleCountResponses = articleRepository.countByDate(year,
+            month);
+
+        HashMap<Integer, Long> counts = new HashMap<>();
+
+        for (ArticleCountResponse response : articleCountResponses) {
+            if (response.getCount() >= 1) {
+                counts.put(response.getDay(), response.getCount());
+            }
+        }
+
+        return counts;
     }
 
     @Transactional
