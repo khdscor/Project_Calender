@@ -1,4 +1,5 @@
 <%@ page import="calender.calender.dto.ArticleResponse" %>
+<%@ page import="java.util.Arrays" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -7,10 +8,20 @@
           type="text/css">
 </head>
 <body>
-
 <%
     ArticleResponse details = (ArticleResponse) request.getAttribute(
             "details");
 %>
+<div class="outside">
+    <div class="container">
+        <div class="cancel" onclick="history.back()">x</div>
+        <div class="title"><%=details.getTitle()%></div>
+        <div class="content">
+                <%=details.getContent()%>
+        </div>
+        <div class="writer">작성자: <%=details.getWriter()%></div>
+        <div class="createdDate"><%=details.getCreatedDate()%></div>
+    </div>
+</div>
 </body>
 </html>

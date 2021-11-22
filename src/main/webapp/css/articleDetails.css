@@ -1,0 +1,70 @@
+div.outside {
+  width: 800px;
+  margin: auto;
+}
+
+div.container {
+  background-color: gray;
+  position: relative;
+  height: 500px;
+  margin: 10px;
+  padding-top: 40px;
+  border-radius: 10px;
+  overflow-y: scroll;
+  background-color: #F2F2F2;
+  box-shadow: 0 0 8px #888888;
+  border: 1px solid black;
+}
+
+div.cancel {
+  position: absolute;
+  top: -5px;
+  right: 0;
+  width: 30px;
+  height: 36px;
+  color: black;
+  font-size: 36px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+div.title {
+  position: absolute;
+  height: 50px;
+  width: 600px;
+  font-size: 30px;
+  top: 50px;
+  left: 90px;
+  border: 2px solid #FFBF00;
+  border-radius: 10px;
+  text-align: center;
+}
+
+div.content {
+  position: absolute;
+  height:300px;
+  width: 600px;
+  font-size: 20px;
+  left:90px;
+  top: 130px;
+  border: 2px solid #FFBF00;
+  border-radius: 10px;
+}
+
+div.writer {
+  position: absolute;
+  height:50px;
+  width: 600px;
+  font-size: 15px;
+  left:90px;
+  top: 440px;
+}
+
+div.createdDate {
+  position: absolute;
+  height:50px;
+  width: 600px;
+  font-size: 15px;
+  left:90px;
+  top: 465px;
+}
