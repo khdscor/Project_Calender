@@ -16,7 +16,9 @@ public class MainController {
     private final ArticleService articleService;
 
     @GetMapping
-    public String main(@RequestParam("year") int year, @RequestParam("month") int month,
+    public String main(
+        @RequestParam(value = "year", defaultValue = "0") int year,
+        @RequestParam(value = "month", defaultValue = "0") int month,
         Model model) {
         List<ArticleCountResponse> counts = articleService.findArticleCounts(year, month);
         model.addAttribute("counts", counts);

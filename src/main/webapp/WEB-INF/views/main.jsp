@@ -10,10 +10,17 @@
 </head>
 <body>
 <%
-    Date date = new Date();
-    int year = date.getYear() + 1900;
-    int month = date.getMonth() + 1;
+    int year = 0;
+    int month = 0;
+    if (request.getParameter("year") == null || request.getParameter("month") == null) {
+        Date date = new Date();
+        year = date.getYear() + 1900;
+        month = date.getMonth() + 1;
 
+%>
+<script>location.href='?year=<%=year%>&month=<%=month%>'; </script>
+<%
+    }
     try {
         year = Integer.parseInt(request.getParameter("year"));
         month = Integer.parseInt(request.getParameter("month"));
