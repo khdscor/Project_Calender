@@ -5,6 +5,16 @@ div.container {
   min-height: 500px;
 }
 
+div.counts {
+  position: absolute;
+  right: -100px;
+  top: 120px;
+}
+
+img.count {
+  width: 15px;
+}
+
 div.login {
   width: 800px;
   height: 50px;
@@ -43,10 +53,21 @@ tr {
 }
 
 td {
+  position: relative;
   width: 100px;
   text-align: right;
   font-size: 15pt;
   font-family: D2coding;
+}
+
+div.count {
+  position: absolute;
+  top: 0;
+  left: 12.5%;
+  width: 70%;
+  height: 95%;
+  opacity: 0.3;
+  border-radius: 100px;
 }
 
 th#title {
