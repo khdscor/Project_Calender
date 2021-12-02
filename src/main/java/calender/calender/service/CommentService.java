@@ -24,8 +24,8 @@ public class CommentService {
 
     @Transactional
     public void write(Long articleId, Long userId, String content) {
-        User user = userRepository.findById(userId).orElseThrow(() ->
-            new NotExistsUserException("해당되는 유저가 존재하지 않습니다."));
+        User user = userRepository.findById(userId)
+            .orElseThrow(() -> new NotExistsUserException("해당되는 유저가 존재하지 않습니다."));
         Article article = articleRepository.findById(articleId)
             .orElseThrow(() -> new NotExistsArticleException("해당되는 게시글이 존재하지 않습니다."));
 
