@@ -9,11 +9,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor
 @Getter
-public class ArticleResponse {
+public class ArticleDetailsResponse {
 
     private Long writerId;
     private String writer;
     private Long articleId;
     private String title;
+    private String content;
     private Date createdDate;
 }

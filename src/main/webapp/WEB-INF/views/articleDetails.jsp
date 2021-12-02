@@ -1,4 +1,4 @@
-<%@ page import="calender.calender.dto.ArticleResponse" %>
+<%@ page import="calender.calender.dto.ArticleDetailsResponse" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <% pageContext.setAttribute("replaceChar", "\n"); %>
@@ -10,7 +10,7 @@
 </head>
 <body>
 <%
-    ArticleResponse details = (ArticleResponse) request.getAttribute(
+    ArticleDetailsResponse details = (ArticleDetailsResponse) request.getAttribute(
             "details");
 %>
 <div class="outside">
