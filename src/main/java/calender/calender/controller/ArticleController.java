@@ -2,8 +2,12 @@ package calender.calender.controller;
 
 import calender.calender.dto.WriteRequest;
 import calender.calender.exception.NotExistsArticleException;
+import calender.calender.exception.NotExistsUserException;
+import calender.calender.security.PrincipalDetails;
 import calender.calender.service.ArticleService;
+import java.util.Objects;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,9 +49,11 @@ public class ArticleController {
     }
 
     @PostMapping("/write")
-    public String write(WriteRequest writeRequest) {
+    public String write(WriteRequest writeRequest, @AuthenticationPrincipal PrincipalDetails user) {
+        if (Objects.isNull(user)) {
+            throw new NotExistsUserException("로그인 하세요!");
+        }
         articleService.write(writeRequest);
-
         return "redirect:/articles?year=" + writeRequest.getYear() + "&month="
             + writeRequest.getMonth() + "&day=" + writeRequest.getDay();
     }
