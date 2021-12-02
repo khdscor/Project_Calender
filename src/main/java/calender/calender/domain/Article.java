@@ -3,6 +3,8 @@ package calender.calender.domain;
 import calender.calender.exception.WrongInputException;
 import com.sun.istack.NotNull;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -46,12 +49,15 @@ public class Article {
     @JoinColumn(name = "USER_ID", nullable = false)
     private User user;
 
+    @OneToMany(mappedBy = "article", orphanRemoval = true)
+    private List<Comment> comments = new ArrayList<>();
+
     @CreationTimestamp
     private Timestamp createdDate;
 
     @Builder
     public Article(Long id, int year, int month, int day, String title, String content,
-        User user, Timestamp createdDate) {
+        User user, List<Comment> comments, Timestamp createdDate) {
         validate(title, content, user);
         this.id = id;
         this.year = year;
@@ -60,6 +66,9 @@ public class Article {
         this.title = title;
         this.content = content;
         this.user = user;
+        if (Objects.nonNull(comments)) {
+            this.comments = comments;
+        }
         this.createdDate = createdDate;
     }
 

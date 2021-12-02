@@ -15,5 +15,6 @@ public class ArticleResponse {
     private String writer;
     private Long articleId;
     private String title;
+    private Long commentCount;
     private Date createdDate;
 }
