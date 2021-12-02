@@ -6,6 +6,7 @@ import calender.calender.domain.Article;
 import calender.calender.domain.User;
 import calender.calender.dto.ArticleCountResponse;
 import calender.calender.dto.ArticleResponse;
+import calender.calender.exception.NotExistsArticleException;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -103,5 +104,34 @@ class ArticleRepositoryTest extends RepositoryTest {
 
         //then
         assertThat(articles.size()).isEqualTo(2);
+    }
+
+    @Test
+    void findDetailsById() {
+        //given
+        User user = User.builder()
+            .loginId("test")
+            .password("pass").build();
+        testEntityManager.persist(user);
+
+        Article article = Article.builder()
+            .year(2021)
+            .month(11)
+            .day(20)
+            .title("high")
+            .content("안녕이건 테스트야")
+            .user(user).build();
+        testEntityManager.persist(article);
+
+        testEntityManager.flush();
+        testEntityManager.clear();
+
+        //when
+        Article details = articleRepository.findDetailsById(article.getId()).orElseThrow(
+            () -> new NotExistsArticleException("게시글 존재x"));
+
+        //then
+        assertThat(details.getUser().getLoginId()).isEqualTo(user.getLoginId());
+        assertThat(details.getId()).isEqualTo(article.getId());
     }
 }

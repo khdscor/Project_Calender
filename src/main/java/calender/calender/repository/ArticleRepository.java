@@ -2,7 +2,6 @@ package calender.calender.repository;
 
 import calender.calender.domain.Article;
 import calender.calender.dto.ArticleCountResponse;
-import calender.calender.dto.ArticleDetailsResponse;
 import calender.calender.dto.ArticleResponse;
 import java.util.List;
 import java.util.Optional;
@@ -29,12 +28,8 @@ public interface ArticleRepository extends JpaRepository<Article, Long> {
         @Param("month") int month,
         @Param("day") int day);
 
-    @Query("select distinct new calender.calender.dto.ArticleDetailsResponse(user.id, user.loginId, "
-        + "article.id, "
-        + "article.title,"
-        + "article.content, "
-        + "article.createdDate) from Article article "
-        + "inner join article.user user "
+    @Query("select distinct article from Article article "
+        + "join fetch article.user user "
         + "where article.id = :articleId")
-    Optional<ArticleDetailsResponse> findDetailsById(@Param("articleId") Long articleId);
+    Optional<Article> findDetailsById(@Param("articleId") Long articleId);
 }
