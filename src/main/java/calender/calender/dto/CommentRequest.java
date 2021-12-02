@@ -8,11 +8,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor
 @Getter
-public class WriteRequest {
-    private String title;
+public class CommentRequest {
+
+    private Long articleId;
     private String content;
-    private int year;
-    private int month;
-    private int day;
-    private Long userId;
 }

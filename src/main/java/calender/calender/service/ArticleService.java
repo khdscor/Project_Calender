@@ -4,7 +4,7 @@ import calender.calender.domain.Article;
 import calender.calender.domain.User;
 import calender.calender.dto.ArticleCountResponse;
 import calender.calender.dto.ArticleResponse;
-import calender.calender.dto.WriteRequest;
+import calender.calender.dto.ArticleRequest;
 import calender.calender.exception.NotExistsArticleException;
 import calender.calender.exception.NotExistsUserException;
 import calender.calender.repository.ArticleRepository;
@@ -39,7 +39,7 @@ public class ArticleService {
     }
 
     @Transactional
-    public void write(WriteRequest writeRequest) {
+    public void write(ArticleRequest writeRequest) {
         User user = userRepository.findById(writeRequest.getUserId())
             .orElseThrow(() -> new NotExistsUserException("해당되는 유저가 존재하지 않습니다."));
 

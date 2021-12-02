@@ -1,6 +1,6 @@
 package calender.calender.controller;
 
-import calender.calender.dto.WriteRequest;
+import calender.calender.dto.ArticleRequest;
 import calender.calender.exception.NotExistsArticleException;
 import calender.calender.exception.NotExistsUserException;
 import calender.calender.security.PrincipalDetails;
@@ -49,7 +49,7 @@ public class ArticleController {
     }
 
     @PostMapping("/write")
-    public String write(WriteRequest writeRequest, @AuthenticationPrincipal PrincipalDetails user) {
+    public String write(ArticleRequest writeRequest, @AuthenticationPrincipal PrincipalDetails user) {
         if (Objects.isNull(user)) {
             throw new NotExistsUserException("로그인 하세요!");
         }
