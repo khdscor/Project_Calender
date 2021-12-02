@@ -42,29 +42,69 @@ div.title {
 
 div.content {
   position: absolute;
-  height:300px;
+  height: 200px;
   width: 600px;
   font-size: 20px;
-  left:90px;
+  left: 90px;
   top: 130px;
+  overflow-y: scroll;
   border: 2px solid #FFBF00;
   border-radius: 10px;
 }
 
 div.writer {
   position: absolute;
-  height:50px;
-  width: 600px;
-  font-size: 15px;
-  left:90px;
-  top: 440px;
+  height: 50px;
+  width: 100px;
+  font-size: 12px;
+  left: 90px;
+  top: 340px;
 }
 
 div.createdDate {
   position: absolute;
-  height:50px;
+  height: 50px;
+  width: 300px;
+  font-size: 12px;
+  left: 90px;
+  top: 360px;
+}
+
+div.comment {
+  position: absolute;
+  height: 100px;
   width: 600px;
-  font-size: 15px;
-  left:90px;
-  top: 465px;
+  font-size: 20px;
+  left: 90px;
+  top: 380px;
+  overflow-y: scroll;
+  border: 2px solid #FFBF00;
+  border-radius: 10px;
+}
+
+form.writeComment {
+  margin: 5px;
+  height: 50px;
+  font-size: 16px;
+}
+
+input.commentInput {
+  display: inline-block;
+  height: 30px;
+  width: 65%;
+  font-size: 20px;
+  margin-left: 15px;
+}
+
+input.commentInputSubmit {
+  display: inline-block;
+  height: 30px;
+  width: 25%;
+  font-size: 17px;
+  margin-left: 20px;
+}
+
+input.dummy {
+  position: absolute;
+  visibility: hidden;
 }
