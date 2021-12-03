@@ -80,12 +80,11 @@ div.subInfo {
 
 div.createdDate {
   position: absolute;
-  left: 10px;
   color: #666666;
 }
 
 div.comment {
   position: absolute;
   right: 30px;
-  color: rgb(90, 155, 213);
+  color: blue;
 }

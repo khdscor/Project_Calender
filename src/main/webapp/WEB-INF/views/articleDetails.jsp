@@ -1,4 +1,7 @@
-<%@ page import="calender.calender.dto.ArticleResponse" %>
+<%@ page import="calender.calender.dto.ArticleDetailsResponse" %>
+<%@ page import="calender.calender.domain.Comment" %>
+<%@ page import="java.util.List" %>
+<%@ page import="calender.calender.dto.CommentResponse" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <% pageContext.setAttribute("replaceChar", "\n"); %>
@@ -10,9 +13,20 @@
 </head>
 <body>
 <%
-    ArticleResponse details = (ArticleResponse) request.getAttribute(
+    ArticleDetailsResponse details = (ArticleDetailsResponse) request.getAttribute(
             "details");
+    List<CommentResponse> comments = details.getCommentResponses();
 %>
+<script>
+  function check() {
+    if (document.getElementById("comment").value == "") {
+      alert("댓글을 입력하세요");
+      return;
+    }
+    form.submit();
+
+  }
+</script>
 <div class="outside">
     <div class="container">
         <div class="cancel" onclick="history.back()">x</div>
@@ -23,7 +37,32 @@
         </div>
         <div class="writer">작성자: <%=details.getWriter()%>
         </div>
-        <div class="createdDate"><%=details.getCreatedDate()%>
+        <div class="createdDate">
+            작성날짜: 
+            <%=details.getArticleCreatedDate().getYear() + 1900%> 년
+            <%=details.getArticleCreatedDate().getMonth() + 1%> 월
+            <%=details.getArticleCreatedDate().getDay() - 2%> 일
+        </div>
+        <div class="commentContainer">
+            <form action="/comment/write" method="post" name="form" class="writeComment">
+                <input type="text" class="commentInput" id="comment" name="content"
+                       placeholder="댓글을 입력해주세요">
+                <input class="dummy" type="text" name="articleId" value=<%=details.getArticleId()%>>
+                <input class="commentInputSubmit" type="button" value="댓글 작성" onclick="check()">
+            </form>
+            <%
+                for (CommentResponse comment : comments) {
+                    out.print("<div class=\"comment\">\n"
+                            + "<div class=\"commentContent\">" + comment.getContent() + "</div>\n"
+                            + "<div class=\"commentWriter\">작성자: " + comment.getWriter()
+                            + "</div>\n"
+                            + "<div class=\"commentCreatedDate\">작성날짜: " + (
+                            comment.getCreatedDate().getYear() + 1900) + "년 "
+                            + (comment.getCreatedDate().getMonth() + 1) + "월 "
+                            + (comment.getCreatedDate().getDay() - 2) + "일 "
+                            + "</div>\n" + "</div>");
+                }
+            %>
         </div>
     </div>
 </div>

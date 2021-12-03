@@ -20,21 +20,19 @@ public interface ArticleRepository extends JpaRepository<Article, Long> {
     @Query("select distinct new calender.calender.dto.ArticleResponse(user.id, user.loginId, "
         + "article.id, "
         + "article.title,"
-        + "article.content, "
+        + "count(comments), "
         + "article.createdDate) from Article article "
         + "inner join article.user user "
-        + "where article.year = :year and article.month = :month and article.day = :day")
+        + "left join article.comments comments "
+        + "where article.year = :year and article.month = :month and article.day = :day "
+        + "group by article.id ")
     List<ArticleResponse> findAllByDate(
         @Param("year") int year,
         @Param("month") int month,
         @Param("day") int day);
 
-    @Query("select distinct new calender.calender.dto.ArticleResponse(user.id, user.loginId, "
-        + "article.id, "
-        + "article.title,"
-        + "article.content, "
-        + "article.createdDate) from Article article "
-        + "inner join article.user user "
+    @Query("select distinct article from Article article "
+        + "join fetch article.user user "
         + "where article.id = :articleId")
-    Optional<ArticleResponse> findDetailsById(@Param("articleId") Long articleId);
+    Optional<Article> findDetailsById(@Param("articleId") Long articleId);
 }

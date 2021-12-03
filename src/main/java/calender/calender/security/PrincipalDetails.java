@@ -11,7 +11,7 @@ public class PrincipalDetails implements UserDetails {
 
     private User user;
 
-    public PrincipalDetails(User user){
+    public PrincipalDetails(User user) {
         super();
         this.user = user;
     }
@@ -19,6 +19,10 @@ public class PrincipalDetails implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
+    }
+
+    public Long getUserId() {
+        return user.getId();
     }
 
     @Override

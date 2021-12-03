@@ -1,6 +1,5 @@
 package calender.calender.dto;
 
-import java.util.Date;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,12 +8,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor
 @Getter
-public class ArticleResponse {
+public class CommentRequest {
 
-    private Long writerId;
-    private String writer;
     private Long articleId;
-    private String title;
-    private Long commentCount;
-    private Date createdDate;
+    private String content;
 }
