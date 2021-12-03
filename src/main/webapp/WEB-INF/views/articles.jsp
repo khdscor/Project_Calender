@@ -43,7 +43,7 @@
                         + (article.getCreatedDate().getDay() - 2) + "일 "
                         + "                </div>\n"
                         + "                <div class=\"comment\">\n"
-                        + "                    댓글 수\n"
+                        + "                    댓글 수: " + article.getCommentCount()+ "\n"
                         + "                </div>\n"
                         + "            </div>\n"
                         + "        </div>");
