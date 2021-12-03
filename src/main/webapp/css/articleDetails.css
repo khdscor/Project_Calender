@@ -70,20 +70,18 @@ div.createdDate {
   top: 360px;
 }
 
-div.comment {
+div.commentContainer {
   position: absolute;
-  height: 100px;
   width: 600px;
   font-size: 20px;
   left: 90px;
   top: 380px;
-  overflow-y: scroll;
   border: 2px solid #FFBF00;
   border-radius: 10px;
 }
 
 form.writeComment {
-  margin: 5px;
+  margin: 5px 5px -10px 5px;
   height: 50px;
   font-size: 16px;
 }
@@ -107,4 +105,28 @@ input.commentInputSubmit {
 input.dummy {
   position: absolute;
   visibility: hidden;
+}
+
+div.comment {
+  min-height: 70px;
+  width: 95%;
+  margin: 5px 0 12px 12px;
+  border: 2px solid #FFBF00;
+  border-radius: 10px;
+}
+
+div.commentContent {
+  margin: 10px 0 0 10px;
+  width: 95%;
+  font-size: 18px;
+}
+
+div.commentWriter {
+  margin: 25px 0 5px 10px;
+  font-size: 12px;
+}
+
+div.commentCreatedDate {
+  margin: 5px 0 5px 10px;
+  font-size: 12px;
 }

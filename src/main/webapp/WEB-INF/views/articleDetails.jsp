@@ -1,4 +1,7 @@
 <%@ page import="calender.calender.dto.ArticleDetailsResponse" %>
+<%@ page import="calender.calender.domain.Comment" %>
+<%@ page import="java.util.List" %>
+<%@ page import="calender.calender.dto.CommentResponse" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <% pageContext.setAttribute("replaceChar", "\n"); %>
@@ -12,6 +15,7 @@
 <%
     ArticleDetailsResponse details = (ArticleDetailsResponse) request.getAttribute(
             "details");
+    List<CommentResponse> comments = details.getCommentResponses();
 %>
 <script>
   function check() {
@@ -35,13 +39,22 @@
         </div>
         <div class="createdDate"><%=details.getArticleCreatedDate()%>
         </div>
-        <div class="comment">
+        <div class="commentContainer">
             <form action="/comment/write" method="post" name="form" class="writeComment">
                 <input type="text" class="commentInput" id="comment" name="content"
                        placeholder="댓글을 입력해주세요">
                 <input class="dummy" type="text" name="articleId" value=<%=details.getArticleId()%>>
                 <input class="commentInputSubmit" type="button" value="댓글 작성" onclick="check()">
             </form>
+            <%
+                for (CommentResponse comment : comments) {
+                    out.print("<div class=\"comment\">\n"
+                            + "<div class=\"commentContent\">" + comment.getContent() + "</div>\n"
+                            + "<div class=\"commentWriter\">작성자: " + comment.getWriter() + "</div>\n"
+                            + "<div class=\"commentCreatedDate\">작성날짜: " + comment.getCreatedDate() + "</div>\n"
+                            + "</div>");
+                }
+            %>
         </div>
     </div>
 </div>
