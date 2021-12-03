@@ -37,7 +37,11 @@
         </div>
         <div class="writer">작성자: <%=details.getWriter()%>
         </div>
-        <div class="createdDate"><%=details.getArticleCreatedDate()%>
+        <div class="createdDate">
+            작성날짜: 
+            <%=details.getArticleCreatedDate().getYear() + 1900%> 년
+            <%=details.getArticleCreatedDate().getMonth() + 1%> 월
+            <%=details.getArticleCreatedDate().getDay() - 2%> 일
         </div>
         <div class="commentContainer">
             <form action="/comment/write" method="post" name="form" class="writeComment">
@@ -50,9 +54,13 @@
                 for (CommentResponse comment : comments) {
                     out.print("<div class=\"comment\">\n"
                             + "<div class=\"commentContent\">" + comment.getContent() + "</div>\n"
-                            + "<div class=\"commentWriter\">작성자: " + comment.getWriter() + "</div>\n"
-                            + "<div class=\"commentCreatedDate\">작성날짜: " + comment.getCreatedDate() + "</div>\n"
-                            + "</div>");
+                            + "<div class=\"commentWriter\">작성자: " + comment.getWriter()
+                            + "</div>\n"
+                            + "<div class=\"commentCreatedDate\">작성날짜: " + (
+                            comment.getCreatedDate().getYear() + 1900) + "년 "
+                            + (comment.getCreatedDate().getMonth() + 1) + "월 "
+                            + (comment.getCreatedDate().getDay() - 2) + "일 "
+                            + "</div>\n" + "</div>");
                 }
             %>
         </div>

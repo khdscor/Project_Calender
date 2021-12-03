@@ -1,7 +1,4 @@
 <%@page import="calender.calender.util.Calendar" %>
-<%@page import="java.util.Date" %>
-<%@ page import="calender.calender.dto.ArticleCountResponse" %>
-<%@ page import="java.util.List" %>
 <%@ page import="java.util.HashMap" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
