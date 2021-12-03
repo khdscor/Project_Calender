@@ -10,6 +10,7 @@ public interface CommentRepository extends JpaRepository<Comment, Long> {
 
     @Query("select distinct comment from Comment comment "
         + "join fetch comment.user user "
-        + "where comment.article.id = :articleId")
+        + "where comment.article.id = :articleId "
+        + "order by comment.createdDate desc")
     List<Comment> findAllByArticleId(@Param("articleId") Long articleId);
 }
