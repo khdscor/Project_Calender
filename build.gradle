@@ -22,6 +22,7 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+    implementation 'mysql:mysql-connector-java'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'com.h2database:h2'
     implementation 'javax.servlet:jstl'
