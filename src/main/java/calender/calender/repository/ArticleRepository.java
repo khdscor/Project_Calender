@@ -25,7 +25,8 @@ public interface ArticleRepository extends JpaRepository<Article, Long> {
         + "inner join article.user user "
         + "left join article.comments comments "
         + "where article.year = :year and article.month = :month and article.day = :day "
-        + "group by article.id ")
+        + "group by article.id "
+        + "order by article.createdDate desc")
     List<ArticleResponse> findAllByDate(
         @Param("year") int year,
         @Param("month") int month,
