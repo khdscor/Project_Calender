@@ -80,6 +80,15 @@ div.commentContainer {
   border-radius: 10px;
 }
 
+form.delete {
+  position: absolute;
+  font-size: 15px;
+  right: 80px;
+  top: 340px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
 form.writeComment {
   margin: 5px 5px -10px 5px;
   height: 50px;
