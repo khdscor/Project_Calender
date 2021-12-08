@@ -44,6 +44,14 @@ input.login {
   position: absolute;
 }
 
+input.logout {
+  left: 0;
+  margin: 8px;
+  height: 30px;
+  font-size: 18px;
+  position: absolute;
+}
+
 table {
   background-color: #F2F2F2;
 }

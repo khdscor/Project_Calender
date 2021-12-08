@@ -4,6 +4,7 @@
 <%@ page import="calender.calender.dto.CommentResponse" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <% pageContext.setAttribute("replaceChar", "\n"); %>
 <html>
 <head>
@@ -26,6 +27,20 @@
     form.submit();
 
   }
+
+  function deletes() {
+    <sec:authorize access="isAuthenticated()">
+    <sec:authentication property="Principal.user.id" var="userId"/>
+    if (${userId}  ==  <%=details.getWriterId()%>) {
+      deleteForm.submit();
+    } else {
+
+    }
+    </sec:authorize>
+    <sec:authorize access="isAnonymous()">
+    alert("작성자만 삭제가 가능합니다.")
+    </sec:authorize>
+  }
 </script>
 <div class="outside">
     <div class="container">
@@ -38,11 +53,14 @@
         <div class="writer">작성자: <%=details.getWriter()%>
         </div>
         <div class="createdDate">
-            작성날짜: 
+            작성날짜:
             <%=details.getArticleCreatedDate().getYear() + 1900%> 년
             <%=details.getArticleCreatedDate().getMonth() + 1%> 월
             <%=details.getArticleCreatedDate().getDay() - 2%> 일
         </div>
+        <form action="delete/<%=details.getArticleId()%>" method="post" name="deleteForm"
+              class="delete" onclick="deletes()">삭제
+        </form>
         <div class="commentContainer">
             <form action="/comment/write" method="post" name="form" class="writeComment">
                 <input type="text" class="commentInput" id="comment" name="content"
