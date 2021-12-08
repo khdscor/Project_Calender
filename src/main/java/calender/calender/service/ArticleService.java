@@ -80,4 +80,14 @@ public class ArticleService {
             articleId, article.getTitle(), article.getContent(), article.getCreatedDate(),
             commentResponses);
     }
+
+    @Transactional
+    public void deleteArticle(Long articleId, Long userId) {
+        Article article = articleRepository.findById(articleId)
+            .orElseThrow(() -> new NotExistsArticleException("해당하는 게시글이 존재하지 않습니다."));
+        if(article.getUser().getId() != userId){
+            throw new NotExistsUserException("작성자가 아니어서 삭제를 진행할 수 없습니다.");
+        }
+        articleRepository.deleteById(article.getId());
+    }
 }

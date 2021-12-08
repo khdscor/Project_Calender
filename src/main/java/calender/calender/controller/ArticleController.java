@@ -43,13 +43,26 @@ public class ArticleController {
         return "/articleDetails";
     }
 
+    @PostMapping("delete/{id}")
+    public String deleteArticle(@AuthenticationPrincipal PrincipalDetails user,
+        @PathVariable String id, Model model) {
+        if (!id.matches("[+-]?\\d*(\\.\\d+)?")) {
+            throw new NotExistsArticleException("해당하는 게시글이 없습니다.");
+        }
+
+        articleService.deleteArticle(Long.parseLong(id), user.getUserId());
+        model.addAttribute("message", "삭제가 완료되었습니다");
+        return "error";
+    }
+
     @GetMapping("/write")
     public String writeArticle() {
         return "/write";
     }
 
     @PostMapping("/write")
-    public String write(ArticleRequest writeRequest, @AuthenticationPrincipal PrincipalDetails user) {
+    public String write(ArticleRequest writeRequest,
+        @AuthenticationPrincipal PrincipalDetails user) {
         if (Objects.isNull(user)) {
             throw new NotExistsUserException("로그인 하세요!");
         }
