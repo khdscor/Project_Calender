@@ -40,7 +40,7 @@
                         + "                <div class=\"createdDate\">작성날짜: "
                         + (article.getCreatedDate().getYear() + 1900) + "년 "
                         + (article.getCreatedDate().getMonth() + 1) + "월 "
-                        + (article.getCreatedDate().getDay() - 2) + "일 "
+                        + (article.getCreatedDate().getDay() + 5) + "일 "
                         + "                </div>\n"
                         + "                <div class=\"comment\">\n"
                         + "                    댓글 수: " + article.getCommentCount()+ "\n"

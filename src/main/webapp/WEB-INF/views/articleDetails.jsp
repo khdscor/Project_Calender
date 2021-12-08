@@ -56,7 +56,7 @@
             작성날짜:
             <%=details.getArticleCreatedDate().getYear() + 1900%> 년
             <%=details.getArticleCreatedDate().getMonth() + 1%> 월
-            <%=details.getArticleCreatedDate().getDay() - 2%> 일
+            <%=details.getArticleCreatedDate().getDay() + 5%> 일
         </div>
         <form action="delete/<%=details.getArticleId()%>" method="post" name="deleteForm"
               class="delete" onclick="deletes()">삭제
