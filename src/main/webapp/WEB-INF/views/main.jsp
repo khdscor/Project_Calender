@@ -19,6 +19,7 @@
     <div class="login">
         <sec:authorize access="isAuthenticated()">
             <div class="auth"><sec:authentication property="Principal.user.loginId"/> 님</div>
+            <input class="logout" type="button" value="로그아웃" onclick="location.href='logout'">
         </sec:authorize>
         <sec:authorize access="isAnonymous()">
             <input class="signUp" type="button" value="회원가입" onclick="location='signup'">
