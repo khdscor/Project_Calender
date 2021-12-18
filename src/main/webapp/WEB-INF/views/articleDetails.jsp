@@ -34,7 +34,7 @@
     if (${userId}  ==  <%=details.getWriterId()%>) {
       deleteForm.submit();
     } else {
-
+      alert("작성자만 삭제가 가능합니다.")
     }
     </sec:authorize>
     <sec:authorize access="isAnonymous()">
