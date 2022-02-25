@@ -14,6 +14,8 @@ public class ArticleMapperTest {
     public void findById(){
         System.out.println(articleMapper.findById(111L));
         System.out.println(articleMapper.findById(1L));
+        System.out.println(articleMapper.findById2(111L));
+        System.out.println(articleMapper.findById2(1L));
 
     }
 }
