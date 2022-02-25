@@ -5,6 +5,7 @@ import calender.calender.domain.Comment;
 import calender.calender.domain.User;
 import calender.calender.exception.NotExistsArticleException;
 import calender.calender.exception.NotExistsUserException;
+import calender.calender.mapper.ArticleMapper;
 import calender.calender.repository.ArticleRepository;
 import calender.calender.repository.CommentRepository;
 import calender.calender.repository.UserRepository;
@@ -22,12 +23,17 @@ public class CommentService {
 
     private final CommentRepository commentRepository;
 
+    private final ArticleMapper articleMapper;
+
     @Transactional
     public void write(Long articleId, Long userId, String content) {
         User user = userRepository.findById(userId)
             .orElseThrow(() -> new NotExistsUserException("해당되는 유저가 존재하지 않습니다."));
-        Article article = articleRepository.findById(articleId)
-            .orElseThrow(() -> new NotExistsArticleException("해당되는 게시글이 존재하지 않습니다."));
+        /*Article article = articleRepository.findById(articleId)
+            .orElseThrow(() -> new NotExistsArticleException("해당되는 게시글이 존재하지 않습니다."));*/
+        Article article = articleMapper.findById(articleId);
+        if(article == null)
+            throw new NotExistsArticleException("해당되는 게시글이 존재하지 않습니다.");
 
         commentRepository.save(Comment.builder()
             .content(content)
