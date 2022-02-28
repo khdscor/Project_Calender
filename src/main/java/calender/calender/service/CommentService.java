@@ -10,9 +10,11 @@ import calender.calender.repository.ArticleRepository;
 import calender.calender.repository.CommentRepository;
 import calender.calender.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+@Log4j2
 @Service
 @RequiredArgsConstructor
 public class CommentService {
@@ -27,10 +29,9 @@ public class CommentService {
 
     @Transactional
     public void write(Long articleId, Long userId, String content) {
+        log.info("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
         User user = userRepository.findById(userId)
             .orElseThrow(() -> new NotExistsUserException("해당되는 유저가 존재하지 않습니다."));
-        /*Article article = articleRepository.findById(articleId)
-            .orElseThrow(() -> new NotExistsArticleException("해당되는 게시글이 존재하지 않습니다."));*/
         Article article = articleMapper.findById(articleId);
         if(article == null)
             throw new NotExistsArticleException("해당되는 게시글이 존재하지 않습니다.");

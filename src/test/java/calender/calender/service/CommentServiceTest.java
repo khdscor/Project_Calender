@@ -7,6 +7,7 @@ import calender.calender.domain.User;
 import calender.calender.repository.ArticleRepository;
 import calender.calender.repository.CommentRepository;
 import calender.calender.repository.UserRepository;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -28,6 +29,10 @@ class CommentServiceTest {
     @Autowired
     UserRepository userRepository;
 
+    @BeforeEach
+    void setUp() {
+        commentRepository.deleteAll();
+    }
 
     @Test
     @Transactional
@@ -39,7 +44,7 @@ class CommentServiceTest {
             .build();
         userRepository.save(user);
         Article article = Article.builder()
-            .year(2021)
+            .year(2020)
             .month(12)
             .day(2)
             .title("제목")
