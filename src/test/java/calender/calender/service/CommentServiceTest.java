@@ -1,9 +1,12 @@
 package calender.calender.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import calender.calender.domain.Article;
 import calender.calender.domain.User;
+import calender.calender.exception.NotExistsArticleException;
+import calender.calender.exception.NotExistsUserException;
 import calender.calender.repository.ArticleRepository;
 import calender.calender.repository.CommentRepository;
 import calender.calender.repository.UserRepository;
@@ -59,5 +62,15 @@ class CommentServiceTest {
 
         //then
         assertThat(commentRepository.findAll().get(0).getContent()).isEqualTo(content);
+
+        //when && then   -- user가 존재하지 않을 경우
+        assertThatThrownBy(
+            () ->  commentService.write(article.getId(), 1000L, content))
+            .isInstanceOf(NotExistsUserException.class);
+
+        //when && then   -- article이 존재하지 않을 경우
+        assertThatThrownBy(
+            () ->  commentService.write(1000L, user.getId(), content))
+            .isInstanceOf(NotExistsArticleException.class);
     }
 }
