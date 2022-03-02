@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import calender.calender.domain.Article;
+import calender.calender.domain.Comment;
 import calender.calender.domain.User;
 import calender.calender.exception.NotExistsArticleException;
 import calender.calender.exception.NotExistsUserException;
@@ -61,7 +62,10 @@ class CommentServiceTest {
         commentService.write(article.getId(), user.getId(), content);
 
         //then
-        assertThat(commentRepository.findAll().get(0).getContent()).isEqualTo(content);
+        Comment comment = commentRepository.findAll().get(0);
+        assertThat(comment.getContent()).isEqualTo(content);
+        System.out.println("-------------------Time: " + comment.getCreatedDate() + "------------");
+
 
         //when && then   -- user가 존재하지 않을 경우
         assertThatThrownBy(
